@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebApplication1.Models.ZaposleniModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista zaposlenih</h1>
+
+<p>
+    <a asp-action="DodajIlIzmeni" class="alert-primary">Dodaj novog zaposlenog</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ZaposleniID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pozicija)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Godine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Plata)
+            </th>
+            <th>CRUD operacije</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZaposleniID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pozicija)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Godine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plata)
+            </td>
+            <td>
+                @Html.ActionLink("Izmeni zaposlenog", "DodajIlIzmeni", new { id=item.ZaposleniID }) |
+                
+                @Html.ActionLink("Obriši zaposlenog", "Obrisi", new {  id=item.ZaposleniID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
